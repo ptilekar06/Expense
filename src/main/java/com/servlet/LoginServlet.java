@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.UserDAO;
+import com.dao.UserService;
 import com.db.HibernateUtil;
 import com.entity.User;
 
@@ -25,6 +26,9 @@ public class LoginServlet extends HttpServlet {
 		
 		User u=dao.login(email, password);
 		HttpSession session=req.getSession();
+		UserService us=new UserService();
+		String pass=u.getPassword();
+		us.checkPassword(password, pass);
 		if(u==null)
 		{
 			session.setAttribute("msg","Invalid Credentials");

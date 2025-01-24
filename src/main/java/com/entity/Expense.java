@@ -17,6 +17,7 @@ public class Expense {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	@NeverNull
 	private String title;
 	@NeverNull
@@ -25,8 +26,8 @@ public class Expense {
 	private String descr;
 	@NeverNull
 	private String price;
-	@ManyToOne
-	public User user;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User user;
 	public int getId() {
 		return id;
 	}
@@ -48,7 +49,7 @@ public class Expense {
 	public String getDescr() {
 		return descr;
 	}
-	public void setDescr(String desc) {
+	public void setDescr(String descr) {
 		this.descr = descr;
 	}
 	public String getPrice() {
@@ -66,7 +67,6 @@ public class Expense {
 	}
 	public Expense() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Expense(String title, String date, String descr, String price,User user) {
 		super();

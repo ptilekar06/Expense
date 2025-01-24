@@ -13,11 +13,12 @@ import com.dao.ExpenseDAO;
 import com.db.HibernateUtil;
 import com.entity.Expense;
 import com.entity.User;
-@WebServlet("/saveExpense")
-public class SaveExpenseServlet extends HttpServlet{
+@WebServlet("/update")
+public class UpdateServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id=Integer.parseInt(req.getParameter("id"));
 		String title=req.getParameter("title");
 		String date=req.getParameter("date");
 		String price=req.getParameter("price");
@@ -28,13 +29,14 @@ public class SaveExpenseServlet extends HttpServlet{
 		User user=(User) session.getAttribute("LoginUser");
 		
 		Expense ex=new Expense(title,date,descr,price,user);
+		ex.setId(id);
 		ExpenseDAO dao=new ExpenseDAO(HibernateUtil.getSessionFactory());
-		boolean f=dao.saveExpense(ex);
+		boolean f=dao.updateExpense(ex);
 		if(f==true)
 		{
-			session.setAttribute("mesg","Expense Added Successfully");
+			session.setAttribute("mesg","Expense Updated Successfully");
 				
-			resp.sendRedirect("user/addexp.jsp");
+			resp.sendRedirect("user/viewexp.jsp");
 		}
 		else
 		{

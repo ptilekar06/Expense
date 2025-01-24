@@ -18,11 +18,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@NeverNull
+	@Column(nullable = false)
 	private String name;
-	@PrimaryKeyJoinColumn
+	@Column(nullable = false,unique=true)
 	private String email;
-	@NeverNull
+	@Column(nullable = false)
 	private String password;
 	public User() {
 		super();

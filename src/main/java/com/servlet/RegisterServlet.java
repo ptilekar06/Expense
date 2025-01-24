@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.UserDAO;
+import com.dao.UserService;
 import com.db.HibernateUtil;
 import com.entity.User;
 
@@ -29,6 +30,8 @@ public class RegisterServlet extends HttpServlet{
 		UserDAO dao=new UserDAO(HibernateUtil.getSessionFactory());
 		boolean f=dao.saveuser(u);
 		HttpSession session=req.getSession();
+		UserService us=new UserService();
+		us.hashPassword(password);
 		if(f==true)
 		{
 			session.setAttribute("mesg","Registered Successfully");

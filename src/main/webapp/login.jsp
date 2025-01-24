@@ -28,7 +28,7 @@ box-shadow:0 0 6px 0 rgba(0,0,0,0,3);
 <p class="text-center text-danger fs-4">${msg }</p>
 <c:remove var="msg"/>
 </c:if>
-<c:if test="${not empty msgs }">
+<c:if test="${empty msgs }">
 <p class="text-center text-primary fs-4">${msgs }</p>
 <c:remove var="msgs"/>
 </c:if>
@@ -41,11 +41,11 @@ box-shadow:0 0 6px 0 rgba(0,0,0,0,3);
 <form action="login" method="post">
 <div class="mb-3">
 <label> <h6>Email</h6> </label>
-<input type="email" name="email" class="form-control">
+<input type="email" name="email" class="form-control" value="${email }">
 </div>
 <div class="mb-3">
 <label> <h6>Password</h6> </label>
-<input type="password" name="password" class="form-control">
+<input type="password" name="password" class="form-control" value="${password }">
 </div>
 
 <button class="btn btn-outline-dark col-md-12">Sign in</button>

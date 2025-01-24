@@ -16,9 +16,8 @@
 <%@include file="../components/all_css.jsp" %>
 </head>
 <body>
-<c:if test="${empty LoginUser}">
-<c:redirect url="../login.jsp"></c:redirect>
-</c:if>
+
+
 <%@include file="../components/navbar1.jsp" %>
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 	  <div class="carousel-inner">

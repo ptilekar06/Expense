@@ -21,9 +21,9 @@ box-shadow:0 0 6px 0 rgba(0,0,0,0,3);
 </style>
 </head>
 <body class="bg-dark">
-<c:if test="${empty LoginUser}">
-<c:redirect url="../login.jsp"></c:redirect>
-</c:if>
+	<c:if test="${empty LoginUser}">
+	<c:redirect url="../login.jsp"></c:redirect>
+	</c:if>
 <%@include file="../components/navbar1.jsp" %>
 
 <div class="container">
@@ -60,8 +60,8 @@ box-shadow:0 0 6px 0 rgba(0,0,0,0,3);
       <td><%=ex.getDescr() %></td>
       <td><%=ex.getDate() %></td>
       <td><%=ex.getPrice() %></td>
-      <td><a href="" class="btn btn-sm btn-outline-primary me-1">Edit</a>
-      <a href="" class="btn btn-sm btn-outline-danger me-1">Delete</a></td>
+      <td><a href="editexp.jsp?id=<%=ex.getId() %>" class="btn btn-sm btn-primary me-1">Edit</a>
+      <a href="../delete?id=<%=ex.getId() %>" class="btn btn-sm btn-danger me-1">Delete</a></td>
     </tr>
   <%}
   %>
